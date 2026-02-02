@@ -1,42 +1,29 @@
-# Fix: Videos Not Playing on GitHub Pages
+# Videos: YouTube Embeds
 
-## Root cause
+Videos are embedded from **YouTube** instead of local files, so there are no MIME-type or file-size issues on GitHub Pages.
 
-**"No video with supported format and MIME type found"** happens because:
+## Already set (your links)
 
-1. **GitHub Pages serves `.mp4` with the wrong MIME type** (e.g. `application/octet-stream` or `application/mp4` instead of `video/mp4`). Browsers then refuse to play the file.
-2. **GitHub Pages does not resolve Git LFS** – if the repo has LFS pointers instead of real video files, the browser gets a small text file and shows the same error.
-3. **MIME types cannot be configured** on GitHub Pages, so serving videos from Pages directly often fails.
+| Slot | YouTube ID | Link |
+|------|-------------|------|
+| Teaser | yOqy4GOPdBo | balloon |
+| Experiment 1 – plastic cup | hR1X3kBdKcs | in use video plastic cup |
+| Experiment 1 – dropping object | COcEFAMqiP0 | dropping object |
+| Acceleration – balloon | yOqy4GOPdBo | balloon |
+| Acceleration – chips | 4uoQFH4aJ-I | chips |
+| Acceleration – kiwi fruit | mxpiNAobJ0E | kiwi fruit |
+| Acceleration – fabric | zPHNOQjyklw | fabric |
 
-## Solution applied
+## Still placeholders (add tomorrow)
 
-**All video sources in `index.html` now use the jsDelivr CDN**, which serves files from your GitHub repo with the **correct MIME type** (`video/mp4`):
+In `index.html`, **Find** (Ctrl+F) each placeholder and replace with your YouTube video ID:
 
-- Example: `https://cdn.jsdelivr.net/gh/Ethan-nzw/SofeagcGrasp@master/static/videos/website_start_0.mp4`
-- jsDelivr fetches from GitHub and sets the right `Content-Type`, so the `<video>` element can play the file.
+| Placeholder | Slot |
+|-------------|------|
+| `YOUR_VIDEO_ID_METHOD` | Method overview (website_start_1) |
+| `YOUR_VIDEO_ID_WATER_BOTTLE` | Acceleration – water bottle |
+| `YOUR_VIDEO_ID_SOFT_LABOBO` | Acceleration – soft labobo |
+| `YOUR_VIDEO_ID_TISSUE_BOX` | Acceleration – tissue box |
+| `YOUR_VIDEO_ID_SPONGE` | Acceleration – sponge |
 
-**Requirements:**
-
-- The **actual video files** (not LFS pointers) must be in the repo. If you previously used LFS, run:
-
-  ```bash
-  git rm --cached static/videos/*.mp4
-  git add static/videos/
-  git commit -m "Store videos as regular files"
-  git push sofeagc master
-  ```
-
-- If your **default branch is `main`** (not `master`), replace `@master` with `@main` in every video URL in `index.html` (search for `@master` and change to `@main`).
-
-After pushing the updated `index.html`, videos on https://ethan-nzw.github.io/SofeagcGrasp/ should play.
-
----
-
-## Verify
-
-Open one video URL directly (e.g. jsDelivr):
-
-**https://cdn.jsdelivr.net/gh/Ethan-nzw/SofeagcGrasp@master/static/videos/website_start_0.mp4**
-
-- If the **video plays** → the repo has real video files and the site should work.
-- If you see **text** (LFS pointer) or **404** → push the real `.mp4` files as regular files (no LFS) and try again.
+**How to get the video ID:** From `https://youtu.be/XXXXX` the ID is **XXXXX**. Use it in the embed URL: `https://www.youtube.com/embed/XXXXX`.
