@@ -1,0 +1,6 @@
+# Video exceeds GitHub 100 MB limit - host elsewhere and set URL in HTML
+static/videos/in_use_video_plastic_cup.mp4
+
+# Optional: IDE / OS
+.vscode/
+.DS_Store

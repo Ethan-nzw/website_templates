@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Primary Meta Tags -->
+  <meta name="title" content="Synchronized Online Friction Estimation and Adaptive Grasp Control for Robust Gentle Grasp - Zhenwei Niu">
+  <meta name="description" content="Unified framework for gentle robotic grasping coupling real-time friction estimation with adaptive grasp control. Particle filter-based estimation with vision-based tactile sensors and reactive force modulation.">
+  <meta name="keywords" content="robotic grasping, friction estimation, tactile sensing, particle filter, adaptive control, gentle grasp, vision-based tactile sensor">
+  <meta name="author" content="Zhenwei Niu, Zhaoyang Liu, Xiaoyi Chen, Jiayu Hu, Xiaozhu Ju, Jian Tang">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Beijing Innovation Center of Humanoid Robotics">
+  <meta property="og:title" content="Synchronized Online Friction Estimation and Adaptive Grasp Control for Robust Gentle Grasp">
+  <meta property="og:description" content="Unified framework for gentle robotic grasping coupling real-time friction estimation with adaptive grasp control. Particle filter-based estimation with vision-based tactile sensors and reactive force modulation.">
+  <meta property="og:url" content="https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE">
+  <meta property="og:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Synchronized Online Friction Estimation and Adaptive Grasp Control - Research Preview">
+  <meta property="article:published_time" content="2025-01-01T00:00:00.000Z">
+  <meta property="article:author" content="Zhenwei Niu">
+  <meta property="article:section" content="Research">
+  <meta property="article:tag" content="robotic grasping">
+  <meta property="article:tag" content="friction estimation">
+
+  <!-- Academic/Research Specific -->
+  <meta name="citation_title" content="Synchronized Online Friction Estimation and Adaptive Grasp Control for Robust Gentle Grasp">
+  <meta name="citation_author" content="Niu, Zhenwei">
+  <meta name="citation_author" content="Chen, Xiaoyi">
+  <meta name="citation_author" content="Hu, Jiayu">
+  <meta name="citation_author" content="Liu, Zhaoyang">
+  <meta name="citation_author" content="Ju, Xiaozhu">
+  <meta name="citation_author" content="Tang, Jian">
+  <meta name="citation_publication_date" content="2025">
+  <meta name="citation_conference_title" content="CONFERENCE_NAME">
+  <meta name="citation_pdf_url" content="https://YOUR_DOMAIN.com/static/pdfs/paper.pdf">
+
+  <!-- Additional SEO -->
+  <meta name="theme-color" content="#2563eb">
+  <meta name="msapplication-TileColor" content="#2563eb">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://ajax.googleapis.com">
+  <link rel="preconnect" href="https://documentcloud.adobe.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+
+  <title>Synchronized Online Friction Estimation and Adaptive Grasp Control for Robust Gentle Grasp - Zhenwei Niu</title>
+
+  <!-- Favicon and App Icons -->
+  <!-- <link rel="icon" type="image/x-icon" href="static/images/favicon.ico"> -->
+  <!-- <link rel="apple-touch-icon" href="static/images/favicon.ico"> -->
+
+  <!-- Critical CSS - Load synchronously -->
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <!-- Non-critical CSS - Load asynchronously -->
+  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+  <!-- Fallback for browsers that don't support preload -->
+  <noscript>
+    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  </noscript>
+
+  <!-- Fonts - Optimized loading -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Defer non-critical JavaScript -->
+  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script defer src="static/js/bulma-carousel.min.js"></script>
+  <script defer src="static/js/bulma-slider.min.js"></script>
+  <script defer src="static/js/index.js"></script>
+
+  <!-- Structured Data for Academic Papers -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "Synchronized Online Friction Estimation and Adaptive Grasp Control for Robust Gentle Grasp",
+    "description": "Unified framework for gentle robotic grasping coupling real-time friction estimation with adaptive grasp control. Particle filter-based estimation with vision-based tactile sensors and reactive force modulation.",
+    "author": [
+      {"@type": "Person", "name": "Zhenwei Niu", "affiliation": {"@type": "Organization", "name": "Beijing Innovation Center of Humanoid Robotics"}},
+      {"@type": "Person", "name": "Zhaoyang Liu", "affiliation": {"@type": "Organization", "name": "Beijing Innovation Center of Humanoid Robotics"}},
+      {"@type": "Person", "name": "Xiaoyi Chen", "affiliation": {"@type": "Organization", "name": "Beijing Innovation Center of Humanoid Robotics"}},
+      {"@type": "Person", "name": "Jiayu Hu", "affiliation": {"@type": "Organization", "name": "Beijing Innovation Center of Humanoid Robotics"}},
+      {"@type": "Person", "name": "Xiaozhu Ju", "affiliation": {"@type": "Organization", "name": "Beijing Innovation Center of Humanoid Robotics"}},
+      {"@type": "Person", "name": "Jian Tang", "affiliation": {"@type": "Organization", "name": "Beijing Innovation Center of Humanoid Robotics"}}
+    ],
+    "datePublished": "2025-01-01",
+    "publisher": {"@type": "Organization", "name": "CONFERENCE_OR_JOURNAL_NAME"},
+    "url": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE",
+    "image": "https://YOUR_DOMAIN.com/static/images/social_preview.png",
+    "keywords": ["robotic grasping", "friction estimation", "tactile sensing", "particle filter", "adaptive control", "gentle grasp"],
+    "abstract": "We introduce a unified framework for gentle robotic grasping that synergistically couples real-time friction estimation with adaptive grasp control. We propose a new particle filter-based method for real-time estimation of the friction coefficient using vision-based tactile sensors. This estimate is seamlessly integrated into a reactive controller that dynamically modulates grasp force to maintain a stable grip. The two processes operate synchronously in a closed-loop: the controller uses the current best estimate to adjust the force, while new tactile feedback from this action continuously refines the estimation.",
+    "isAccessibleForFree": true,
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "mainEntity": {"@type": "WebPage", "@id": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE"},
+    "about": [{"@type": "Thing", "name": "Robotic grasping"}, {"@type": "Thing", "name": "Tactile sensing"}]
+  }
+  </script>
+
+  <!-- Website/Organization Structured Data (valid JSON - no HTML comments) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Beijing Innovation Center of Humanoid Robotics",
+    "url": "https://YOUR_INSTITUTION_WEBSITE.com",
+    "sameAs": [
+      "https://twitter.com/YOUR_TWITTER_HANDLE",
+      "https://github.com/YOUR_GITHUB_USERNAME"
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Scroll to Top Button -->
+  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <main id="main-content">
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">Synchronized Online Friction Estimation and Adaptive Grasp Control for Robust Gentle Grasp</h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="https://www.linkedin.com/in/zhenwei-niu-783815211/" target="_blank" rel="noopener">Zhenwei Niu</a>,</span>
+              <span class="author-block">
+                <a href="SECOND AUTHOR PERSONAL LINK" target="_blank" rel="noopener">Xiaoyi Chen</a>,</span>
+              <span class="author-block">
+                <a href="THIRD AUTHOR PERSONAL LINK" target="_blank" rel="noopener">Jiayu Hu</a>,
+                <a href="FOURTH AUTHOR PERSONAL LINK" target="_blank" rel="noopener">Zhaoyang Liu</a>,
+                <a href="FIFTH AUTHOR PERSONAL LINK" target="_blank" rel="noopener">Xiaozhu Ju</a>,
+                <a href="SIXTH AUTHOR PERSONAL LINK" target="_blank" rel="noopener">Jian Tang</a>
+              </span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">X-Humanoid</span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <span class="link-block">
+                  <a href="https://arxiv.org/pdf/YOUR_ARXIV_ID.pdf" target="_blank" rel="noopener"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+
+                <span class="link-block">
+                  <a href="https://github.com/YOUR_REPO_HERE" target="_blank" rel="noopener"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fab fa-github"></i></span>
+                    <span>Code</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Teaser video -->
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <video id="teaser-video" poster="" autoplay controls muted loop playsinline height="100%" preload="metadata">
+          <source src="static/videos/website_start_0.mp4" type="video/mp4">
+        </video>
+        <h2 class="subtitle has-text-centered">
+          The proposed synchronized architecture, where the particle filter-based estimator is synergistically integrated with a reactive grasp controller, while new tactile feedback from grasp continuously refines the estimation. This allows a <strong>closed loop</strong> for online friction estimation and continuous force modulation, achieving real-time adaptability and grasp stability.
+        </h2>
+      </div>
+    </div>
+  </section>
+
+  <!-- Paper abstract -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              We introduce a unified framework for gentle robotic grasping that synergistically couples real-time friction estimation with adaptive grasp control. We propose a new particle filter-based method for real-time estimation of the friction coefficient using vision-based tactile sensors. This estimate is seamlessly integrated into a reactive controller that dynamically modulates grasp force to maintain a stable grip. The two processes operate synchronously in a closed-loop: the controller uses the current best estimate to adjust the force, while new tactile feedback from this action continuously refines the estimation. This creates a highly responsive and robust sensorimotor cycle. The reliability and efficiency of the complete framework are validated through extensive robotic experiments.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Method overview: video + key contributions -->
+  <section class="section">
+    <div class="container is-max-desktop has-text-centered">
+      <h2 class="title is-3">Method Overview</h2>
+      <video id="method-video" poster="" autoplay controls muted loop playsinline height="100%" preload="metadata">
+        <source src="static/videos/website_start_1.mp4" type="video/mp4">
+      </video>
+      <div class="content has-text-justified" style="margin-top: 2rem;">
+        <p>We propose a new stochastic modeling approach for friction and introduce an online particle filter-based estimation algorithm that enables rapid, robust, and real-time inference of the friction coefficient during robotic manipulation, even under dynamic physical variations.</p>
+        <p>We develop a tightly coupled estimation-control architecture, where the particle filter-based estimator is synergistically integrated with a reactive grasp controller, while new tactile feedback from grasp continuously refines the estimation. This allows a closed loop for online friction estimation and continuous force modulation, achieving real-time adaptability and grasp stability.</p>
+        <p>We validate the proposed framework through extensive real-world robotic experiments, demonstrating significant performance in both grasp reliability and adaptability.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Video carousel: stable and gentle grasp -->
+  <section class="hero is-small">
+    <div class="hero-body">
+      <div class="container">
+        <h2 class="title is-3">Experiments for Stable and Gentle Grasp</h2>
+        <div id="results-carousel" class="carousel results-carousel">
+          <div class="item item-video1">
+            <video id="exp1-video1" poster="" controls muted loop playsinline height="100%" preload="metadata">
+              <source src="static/videos/in_use_video_plastic_cup.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-video2">
+            <video id="exp1-video2" poster="" controls muted loop playsinline height="100%" preload="metadata">
+              <source src="static/videos/droping_obejct.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Video carousel: acceleration and deceleration -->
+  <section class="hero is-small">
+    <div class="hero-body">
+      <div class="container">
+        <h2 class="title is-3">Stable and Gentle Grasp in Acceleration and Deceleration</h2>
+        <div id="results-carousel-2" class="carousel results-carousel">
+          <div class="item item-video1">
+            <video id="acc-video1" poster="" controls muted loop playsinline height="100%" preload="metadata">
+              <source src="static/videos/balloon.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-video2">
+            <video id="acc-video2" poster="" controls muted loop playsinline height="100%" preload="metadata">
+              <source src="static/videos/chips.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-video3">
+            <video id="acc-video3" poster="" controls muted loop playsinline height="100%" preload="metadata">
+              <source src="static/videos/water_bottle_shake.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-video4">
+            <video id="acc-video4" poster="" controls muted loop playsinline height="100%" preload="metadata">
+              <source src="static/videos/soft_labobo_666.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-video5">
+            <video id="acc-video5" poster="" controls muted loop playsinline height="100%" preload="metadata">
+              <source src="static/videos/tissue_box.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-video6">
+            <video id="acc-video6" poster="" controls muted loop playsinline height="100%" preload="metadata">
+              <source src="static/videos/kiwi_fruit_1.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-video7">
+            <video id="acc-video7" poster="" controls muted loop playsinline height="100%" preload="metadata">
+              <source src="static/videos/fabric.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-video8">
+            <video id="acc-video8" poster="" controls muted loop playsinline height="100%" preload="metadata">
+              <source src="static/videos/sponge_wipe_in_use.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BibTeX citation -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <div class="bibtex-header">
+        <h2 class="title">BibTeX</h2>
+        <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
+          <i class="fas fa-copy"></i>
+          <span class="copy-text">Copy</span>
+        </button>
+      </div>
+      <pre id="bibtex-code"><code>@article{SofeagcGrasp2025,
+  title={Synchronized Online Friction Estimation and Adaptive Grasp Control for Robust Gentle Grasp},
+  author={Niu, Zhenwei and Chen, Xiaoyi and Hu, Jiayu and Liu, Zhaoyang and Ju, Xiaozhu and Tang, Jian},
+  journal={Conference/Journal Name},
+  year={2025},
+  url={https://your-domain.com/your-project-page}
+}</code></pre>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank" rel="noopener">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank" rel="noopener">Nerfies</a> project page.
+              You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br>
+              This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  </main>
+  </body>
+</html>
