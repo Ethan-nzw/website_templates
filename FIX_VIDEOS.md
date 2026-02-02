@@ -1,42 +1,42 @@
 # Fix: Videos Not Playing on GitHub Pages
 
-**"No video with supported format and MIME type found"** means the URL is returning something that isn’t a valid video—usually an **LFS pointer** (small text file) or a **404 HTML page**. GitHub Pages does **not** resolve Git LFS; it serves the pointer file, so the browser gets text and reports that error.
+## Root cause
 
-**What we did:**  
-1. Stopped using LFS for `.mp4` so videos are stored as regular files (all under 100 MB).  
-2. Added a `<base href="https://ethan-nzw.github.io/SofeagcGrasp/">` tag so relative video paths resolve correctly on Pages.  
-3. Fixed the first carousel video (was pointing to the excluded 150 MB file) to use `droping_obejct.mp4`.
+**"No video with supported format and MIME type found"** happens because:
 
----
+1. **GitHub Pages serves `.mp4` with the wrong MIME type** (e.g. `application/octet-stream` or `application/mp4` instead of `video/mp4`). Browsers then refuse to play the file.
+2. **GitHub Pages does not resolve Git LFS** – if the repo has LFS pointers instead of real video files, the browser gets a small text file and shows the same error.
+3. **MIME types cannot be configured** on GitHub Pages, so serving videos from Pages directly often fails.
 
-## Steps to apply (run in your project folder)
+## Solution applied
 
-```bash
-cd /home/niu/website_templates
+**All video sources in `index.html` now use the jsDelivr CDN**, which serves files from your GitHub repo with the **correct MIME type** (`video/mp4`):
 
-# 1. Remove LFS pointers from the index (keeps files on disk)
-git rm --cached static/videos/*.mp4
+- Example: `https://cdn.jsdelivr.net/gh/Ethan-nzw/SofeagcGrasp@master/static/videos/website_start_0.mp4`
+- jsDelivr fetches from GitHub and sets the right `Content-Type`, so the `<video>` element can play the file.
 
-# 2. Add videos as regular files (from your working directory)
-git add .gitattributes
-git add static/videos/
-git add index.html
+**Requirements:**
 
-# 3. Commit and push
-git commit -m "Store videos as regular files so GitHub Pages can serve them"
-git push sofeagc master
-```
+- The **actual video files** (not LFS pointers) must be in the repo. If you previously used LFS, run:
 
-**Note:** Your `static/videos/` folder must contain the **actual video files** on disk (not LFS pointers). If you cloned the repo and never ran `git lfs pull`, run `git lfs pull` first so the real files are in `static/videos/`, then run the commands above.
+  ```bash
+  git rm --cached static/videos/*.mp4
+  git add static/videos/
+  git commit -m "Store videos as regular files"
+  git push sofeagc master
+  ```
 
-After the push, wait 1–2 minutes for GitHub Pages to rebuild. Videos on https://ethan-nzw.github.io/SofeagcGrasp/ should then play.
+- If your **default branch is `main`** (not `master`), replace `@master` with `@main` in every video URL in `index.html` (search for `@master` and change to `@main`).
+
+After pushing the updated `index.html`, videos on https://ethan-nzw.github.io/SofeagcGrasp/ should play.
 
 ---
 
 ## Verify
 
-Open this URL directly in your browser:  
-**https://ethan-nzw.github.io/SofeagcGrasp/static/videos/website_start_0.mp4**
+Open one video URL directly (e.g. jsDelivr):
 
-- If the **video plays or downloads** → the repo is serving real video; the site should work.  
-- If you see **text** (e.g. `version https://git-lfs.github.com/...`) or a **404 page** → the repo still has LFS pointers or the files weren’t pushed; run the steps above again and ensure `static/videos/` on disk has the real `.mp4` files before `git add`.
+**https://cdn.jsdelivr.net/gh/Ethan-nzw/SofeagcGrasp@master/static/videos/website_start_0.mp4**
+
+- If the **video plays** → the repo has real video files and the site should work.
+- If you see **text** (LFS pointer) or **404** → push the real `.mp4` files as regular files (no LFS) and try again.
